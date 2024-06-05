@@ -1,0 +1,13 @@
+# Use PHP index file as the default directory index
+DirectoryIndex index.php
+
+# Enable URL rewriting
+RewriteEngine On
+
+# If the request is for a file or directory that exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# If the request does not point to a file or directory, rewrite it to index.php
+RewriteRule ^ admin_panel/index.php [L]
